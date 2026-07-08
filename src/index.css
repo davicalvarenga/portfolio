@@ -1,1 +1,35 @@
+/* Variáveis Globais - Tema Persona 3 + Mad Men */
+:root {
+  /* Cores de Fundo - The Dark Hour / Velvet Room Vibes */
+  --bg-color: #030816; /* Um azul extremamente escuro, quase preto */
+  
+  /* Cores de Destaque - P3 Reload Blues */
+  --p3-blue: #0056b3; 
+  --p3-light-blue: #00d2ff; 
+  
+  /* Cores Secundárias - Toque de elegância vintage (Creme/Whisky) */
+  --madmen-cream: #f4eedd;
+  --p3-white: #ffffff;
+  --p3-gray: #a0aab5;
 
+  /* Fontes (Importadas no index.html) */
+  --font-serif: 'Playfair Display', serif; /* Elegância clássica, agência de publicidade */
+  --font-sans: 'Inter', sans-serif; /* Modernidade, UI de jogos */
+
+  /* Mapeamento de uso */
+  --text-primary: var(--madmen-cream);
+}
+
+/* Zerando as margens padrão do navegador e aplicando o fundo */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  
+  /* Padrão sutil no fundo */
+  background-image: radial-gradient(circle at center, rgba(0, 210, 255, 0.04) 0%, transparent 70%);
+  background-size: cover;
+  background-attachment: fixed;
+}
