@@ -1,125 +1,125 @@
 // Dados dos projetos exibidos em /projetos e /projetos/:slug.
-// Troque os campos abaixo pelos seus projetos reais quando quiser.
+// links.demo: URL da versão no ar (ou null). links.repos: repositórios públicos (pode ser vazio).
 export const projects = [
   {
-    slug: "neuromancer-ui",
+    slug: "automacoes-glpi-n8n",
     number: "01",
-    title: "Neuromancer UI",
-    category: "web",
-    status: "Classified",
+    title: "Automações GLPI + n8n",
+    category: "automacao",
+    status: "Em produção",
     icon: "hub",
-    tags: ["React", "WebGL", "Tailwind"],
+    tags: ["n8n", "JavaScript", "API REST"],
     summary:
-      "Um dashboard pesado em WebGL explorando estruturalismo cibernético e visualização de dados.",
-    tagline: "Fintech / Data Viz",
+      "Workflows n8n que consultam a API REST do GLPI, calculam SLA em JavaScript e entregam a fila de chamados de cada técnico no chat.",
+    tagline: "Automação / Suporte de TI",
     description:
-      "Uma plataforma de visualização de dados de alta tensão, desenhada para processar milhões de transações com latência zero. Construída para o arquiteto moderno das finanças digitais.",
+      "Versões públicas e sanitizadas das automações que desenvolvo no estágio: integram o GLPI ao Nextcloud Talk e ao Rocket.Chat para que cada técnico receba seus chamados pendentes antes do turno.",
     challenge:
-      "Ledgers financeiros tradicionais falham em comunicar urgência. O cliente precisava de um sistema que processasse datasets massivos em tempo real, mas com uma estética que refletisse o ambiente de alto risco do trading algorítmico.",
+      "Os técnicos gastavam o intervalo entre atendimentos procurando chamados pendentes no GLPI. A informação existia, mas não chegava a ninguém de forma proativa.",
     solution:
-      "Implementamos um layout 'Fractured Swiss Grid'. Usando offsets tonais rígidos em vez de sombras suaves, criamos uma hierarquia pseudo-3D que parece física e concreta. Os streams de dados são visualizados com animações escalonadas e 'glitch', abandonando interpolações suaves em favor de uma estética crua que aumenta a percepção durante movimentos críticos de mercado.",
+      "Criei, por iniciativa própria, um workflow n8n que consulta a API REST do GLPI, calcula SLA e dias em aberto em JavaScript, trata chamados compartilhados entre técnicos e envia a fila de cada um por mensagem direta, com controle de rate-limit. Em produção, a fila chega a 11 colaboradores em cerca de 5 minutos, antes do turno.",
     techStack: [
-      { icon: "memory", name: "React + WebGL", desc: "Motor de renderização para visualização de dados em alto FPS." },
-      { icon: "database", name: "GraphQL Subscriptions", desc: "Streaming de dados em tempo real com latência sub-50ms." },
-      { icon: "design_services", name: "Tailwind CSS (Custom)", desc: "Aderência estrita aos tokens do design system Tactile Dark." },
-      { icon: "animation", name: "Framer Motion", desc: "Animações cinéticas e escalonadas para transições de UI." },
+      { icon: "account_tree", name: "n8n", desc: "Orquestração dos workflows e agendamento por cron." },
+      { icon: "api", name: "API REST do GLPI", desc: "Sessão autenticada e busca de chamados pendentes." },
+      { icon: "javascript", name: "JavaScript", desc: "Cálculo de SLA, dias em aberto e agrupamento por técnico." },
+      { icon: "forum", name: "Nextcloud Talk / Rocket.Chat", desc: "Entrega da fila por mensagem direta." },
     ],
+    links: {
+      demo: null,
+      repos: [
+        { label: "GLPI + Nextcloud Talk", href: "https://github.com/davicalvarenga/Automacao-glpi-nextcloud-n8n" },
+        { label: "GLPI + Rocket.Chat", href: "https://github.com/davicalvarenga/GLPI-Rocket.Chat-via-n8n" },
+      ],
+    },
   },
   {
-    slug: "basel-frame",
+    slug: "graphs-code",
     number: "02",
-    title: "Basel Frame",
+    title: "Graphs-Code",
     category: "web",
-    status: "Active",
-    icon: "grid_view",
-    tags: ["Next.js", "Framer Motion"],
-    summary: "Tipografia rígida em grid encontra transições fluidas de página para uma agência boutique.",
-    tagline: "Agência / Branding",
+    status: "No ar",
+    icon: "share",
+    tags: ["TypeScript", "Next.js", "Jest"],
+    summary:
+      "Visualizador web que executa linha a linha um programa C de teoria dos grafos, sincronizando código, grafo animado e estruturas de dados.",
+    tagline: "Educação / Visualização",
     description:
-      "Site institucional para uma agência criativa boutique, unindo a precisão de um grid suíço dos anos 60 com transições de página cinéticas e uma tipografia editorial agressiva.",
+      "Projeto pessoal de apoio a uma disciplina da faculdade: mostra no navegador, passo a passo, o que um programa C de grafos faz a cada linha.",
     challenge:
-      "A agência queria transmitir rigor técnico sem soar fria ou corporativa demais, mantendo a personalidade rebelde da marca em cada interação.",
+      "Acompanhar um algoritmo de grafos só pela saída do terminal esconde o que acontece com as estruturas de dados a cada passo. E um visualizador que divergisse do programa real ensinaria errado.",
     solution:
-      "Um sistema de grid de 12 colunas estritamente respeitado no desktop, quebrado propositalmente em elementos de destaque via rotação e sobreposição de colunas, com transições de página orquestradas pelo Framer Motion.",
+      "Construí o visualizador em TypeScript estrito com React e Next.js, sincronizando a linha atual do código, o grafo animado e o estado das estruturas. A saída é validada contra o binário compilado com gcc em 72 casos de teste, o CI exige cobertura mínima de 80% e cada pull request gera um preview na Vercel.",
     techStack: [
-      { icon: "web", name: "Next.js", desc: "Renderização híbrida e rotas de página com transições persistentes." },
-      { icon: "animation", name: "Framer Motion", desc: "Transições de página e microinterações." },
-      { icon: "design_services", name: "Tailwind CSS", desc: "Sistema de grid fraturado e tokens tipográficos." },
+      { icon: "code", name: "TypeScript (estrito)", desc: "Tipagem estrita em todo o projeto." },
+      { icon: "web", name: "React + Next.js", desc: "Interface sincronizada entre código, grafo e estruturas." },
+      { icon: "verified", name: "Jest", desc: "72 casos validados contra o gcc; cobertura mínima de 80% no CI." },
+      { icon: "rocket_launch", name: "Vercel", desc: "Deploy contínuo e preview a cada pull request." },
     ],
+    links: {
+      demo: "https://graphs-code.vercel.app",
+      repos: [{ label: "Código-fonte", href: "https://github.com/davicalvarenga/Graphs-Code" }],
+    },
   },
   {
-    slug: "kinetix-mobile",
+    slug: "framework-candidaturas",
     number: "03",
-    title: "Kinetix Mobile",
-    category: "mobile",
-    status: "Active",
-    icon: "sprint",
-    tags: ["React Native", "Zustand"],
-    summary: "Uma experiência mobile agressiva e orientada a gestos para rastreamento de fitness urbano.",
-    tagline: "Fitness / Mobile App",
+    title: "Framework de Candidaturas",
+    category: "ferramentas",
+    status: "Open source",
+    icon: "work_history",
+    tags: ["Python", "LaTeX", "IA"],
+    summary:
+      "Fork open source aprimorado para o mercado brasileiro com o auxílio de IA: avalia vagas, gera CV e carta em LaTeX e busca vagas na Gupy e no Vagas.com.",
+    tagline: "Carreira / Automação",
     description:
-      "Aplicativo mobile para atletas urbanos, com navegação por gestos, feedback tátil e uma interface que reage à intensidade do treino em tempo real.",
+      "Fork do framework de Mads Lorentzen aprimorado para o mercado brasileiro com o auxílio de IA, para organizar e acelerar candidaturas sem inventar experiência.",
     challenge:
-      "Usuários em movimento precisam de decisões visuais instantâneas — texto denso e navegação tradicional não funcionavam durante o treino.",
+      "Cada candidatura exigia adaptar currículo e carta de apresentação à vaga. Uma única carta chegava a levar uma tarde inteira.",
     solution:
-      "Interface baseada em gestos com grandes alvos de toque, feedback tátil (haptics) e uma paleta de alto contraste que se adapta ao esforço do usuário, com estado global leve via Zustand.",
+      "Adaptei o framework ao mercado brasileiro: avaliação da vaga contra o perfil, geração de CV e carta em LaTeX, checagem do que o ATS da Gupy lê, busca de vagas na Gupy e no Vagas.com, um segundo agente revisor e uma regra que impede inventar experiência. Uma carta que levava uma tarde passou a sair em minutos. O repositório tem 29 stars e 20 forks no GitHub (nov/2026).",
     techStack: [
-      { icon: "phone_iphone", name: "React Native", desc: "App nativo multiplataforma com performance de 60fps." },
-      { icon: "bolt", name: "Zustand", desc: "Gerenciamento de estado leve e reativo." },
-      { icon: "vibration", name: "Haptics API", desc: "Feedback tátil sincronizado com métricas de treino." },
+      { icon: "terminal", name: "Python", desc: "Ferramentas de apoio e verificação dos PDFs gerados." },
+      { icon: "description", name: "LaTeX", desc: "Templates de CV (moderncv) e carta de apresentação." },
+      { icon: "travel_explore", name: "Busca de vagas", desc: "Integração com Gupy e Vagas.com." },
+      { icon: "fact_check", name: "Revisão automática", desc: "Checagem de ATS e agente revisor contra invenção de fatos." },
     ],
+    links: {
+      demo: null,
+      repos: [{ label: "Código-fonte", href: "https://github.com/davicalvarenga/ai-job-search" }],
+    },
   },
   {
-    slug: "system-error",
+    slug: "the-crow",
     number: "04",
-    title: "System_Error",
-    category: "creative",
-    status: "Archived",
-    icon: "broken_image",
-    tags: ["Vue 3", "GSAP", "Tailwind"],
-    summary: "Uma peça editorial interativa explorando a estética da falha tecnológica e da arte glitch.",
-    tagline: "Editorial Interativo",
-    description:
-      "Experiência editorial experimental que transforma erros de sistema e artefatos de compressão em linguagem visual, guiando o leitor por um ensaio sobre falhas tecnológicas.",
-    challenge:
-      "Traduzir um ensaio sobre falhas de sistemas complexos em uma experiência de scroll que fosse esteticamente coerente sem sacrificar legibilidade.",
-    solution:
-      "Animações de scroll orientadas por GSAP ScrollTrigger, com distorções controladas de tipografia e imagem que se intensificam conforme o usuário avança pelo texto.",
-    techStack: [
-      { icon: "auto_awesome", name: "Vue 3 + GSAP", desc: "Animações de scroll e transições orientadas por timeline." },
-      { icon: "design_services", name: "Tailwind CSS", desc: "Base de grid e tipografia editorial." },
-    ],
-  },
-  {
-    slug: "quantum-ledger-interface",
-    number: "05",
-    title: "Quantum Ledger Interface",
+    title: "The Crow",
     category: "web",
-    status: "Active",
-    icon: "insights",
-    tags: ["React", "GraphQL", "Node"],
-    summary: "Plataforma de visualização de dados para redes de finanças descentralizadas de alta frequência.",
-    tagline: "Fintech / Web3",
+    status: "Projeto pessoal",
+    icon: "savings",
+    tags: ["React", "Express", "PostgreSQL"],
+    summary:
+      "Aplicação full stack de finanças pessoais integrada ao Open Finance via Pluggy e à Google Gemini API, instalável como PWA.",
+    tagline: "Finanças pessoais / Full stack",
     description:
-      "Uma plataforma de visualização de dados de alta tensão desenhada para processar milhões de transações com latência zero, construída para o arquiteto moderno das finanças digitais.",
+      "Painel de finanças pessoais full stack, do banco de dados ao app instalável, com dados bancários vindos do Open Finance.",
     challenge:
-      "Ledgers financeiros tradicionais falham em comunicar urgência. O cliente exigia um sistema que processasse datasets massivos em tempo real com uma estética que refletisse o ambiente de alto risco do trading algorítmico.",
+      "Reunir as finanças pessoais em um painel único, usando os dados das contas bancárias via Open Finance em vez de lançamentos manuais.",
     solution:
-      "Layout 'Fractured Swiss Grid' com offsets tonais rígidos em vez de sombras suaves, criando hierarquia pseudo-3D física. Dados são visualizados com animações escalonadas e 'glitch' para aumentar a tensão durante movimentos críticos de mercado.",
+      "Frontend em React 19 com Vite, API em Express e banco PostgreSQL rodando em Docker. A integração com o Open Finance é feita via Pluggy, a Google Gemini API gera insights a partir dos dados, e a aplicação pode ser instalada como PWA.",
     techStack: [
-      { icon: "memory", name: "React + WebGL", desc: "Motor de renderização para visualização de dados em alto FPS." },
-      { icon: "database", name: "GraphQL Subscriptions", desc: "Streaming de dados em tempo real com latência sub-50ms." },
-      { icon: "design_services", name: "Tailwind CSS (Custom)", desc: "Aderência estrita aos tokens do design system Tactile Dark." },
-      { icon: "animation", name: "Framer Motion", desc: "Animações cinéticas e escalonadas para transições de UI." },
+      { icon: "web", name: "React 19 + Vite", desc: "Frontend do painel, instalável como PWA." },
+      { icon: "dns", name: "Express", desc: "API do backend." },
+      { icon: "database", name: "PostgreSQL + Docker", desc: "Persistência em container." },
+      { icon: "auto_awesome", name: "Pluggy + Gemini API", desc: "Open Finance e geração de insights." },
     ],
+    links: { demo: null, repos: [] },
   },
 ];
 
 export const categories = [
   { value: "all", label: "Todos" },
   { value: "web", label: "Web" },
-  { value: "mobile", label: "Mobile" },
-  { value: "creative", label: "Creative" },
+  { value: "automacao", label: "Automação" },
+  { value: "ferramentas", label: "Ferramentas" },
 ];
 
 export function getProjectBySlug(slug) {

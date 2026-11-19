@@ -1,9 +1,4 @@
-const socials = [
-  { label: "Github", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "Twitter", href: "#" },
-  { label: "Resume", href: "#" },
-];
+import { socials } from "../data/profile";
 
 const Footer = () => {
   return (
@@ -18,6 +13,8 @@ const Footer = () => {
               <a
                 className="text-body-lg text-outline hover:text-secondary transition-colors"
                 href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {s.label}
               </a>

@@ -5,6 +5,7 @@ import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
 import Skills from './pages/Skills'
 import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="projetos/:slug" element={<ProjectDetail />} />
         <Route path="habilidades" element={<Skills />} />
         <Route path="contato" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )

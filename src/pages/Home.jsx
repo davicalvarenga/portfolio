@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ProjectCard from "../components/ProjectCard";
 import { projects } from "../data/projects";
+import { profile, socials } from "../data/profile";
 
 const Home = () => {
   const featured = projects.slice(0, 3);
@@ -8,7 +9,7 @@ const Home = () => {
   return (
     <>
       {/* Hero */}
-      <section className="min-h-screen relative flex items-center px-margin-mobile md:px-margin-desktop pt-24 overflow-hidden bg-surface-container-lowest">
+      <section className="min-h-screen relative flex items-center px-margin-mobile md:px-margin-desktop pt-40 pb-16 overflow-hidden bg-surface-container-lowest">
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute w-[200%] h-[40px] bg-primary-container opacity-20 -rotate-[35deg] top-[20%] -left-[50%] blur-sm" />
           <div className="absolute w-[200%] h-[120px] bg-primary-container opacity-10 -rotate-[35deg] top-[40%] -left-[50%]" />
@@ -35,15 +36,38 @@ const Home = () => {
                   DA PERSUASÃO
                 </span>
               </h1>
-              <div className="mt-16 max-w-2xl border-l-4 border-primary-container pl-6">
-                <p className="text-body-lg text-on-surface-variant">
-                  Eu não construo apenas interfaces. Crio narrativas digitais sob medida que
-                  convertem, funcionam perfeitamente na calada da noite e deixam uma marca
-                  inesquecível. Estrutura disciplinada encontra energia cinética e urbana.
+              <div className="mt-12 max-w-2xl border-l-4 border-primary-container pl-6">
+                <p className="font-accent text-label-caps text-secondary-fixed-dim uppercase mb-4">
+                  {profile.name} // {profile.role}
                 </p>
+                <p className="text-body-lg text-on-surface-variant">{profile.bio}</p>
+                <p className="text-body-lg text-on-surface mt-4 font-bold">{profile.goal}</p>
               </div>
 
-              <div className="mt-24 flex items-center gap-8 border-t border-outline-variant pt-6 max-w-md">
+              <div className="mt-12 flex flex-wrap gap-6">
+                <Link
+                  to="/projetos"
+                  className="px-8 py-3 bg-primary-container text-on-primary-container font-accent text-label-caps uppercase -skew-x-12 border-2 border-primary shadow-[0_0_15px_rgba(119,1,208,0.4)] hover:shadow-[0_0_25px_rgba(119,1,208,0.6)] transition-all duration-300"
+                >
+                  <span className="inline-block skew-x-12">Ver projetos</span>
+                </Link>
+                {socials.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-8 py-3 border-2 border-outline-variant text-on-surface font-accent text-label-caps uppercase -skew-x-12 hover:border-secondary-fixed-dim hover:text-secondary-fixed-dim transition-colors duration-300"
+                  >
+                    <span className="inline-flex items-center gap-2 skew-x-12">
+                      <span className="material-symbols-outlined text-base">{s.icon}</span>
+                      {s.label}
+                    </span>
+                  </a>
+                ))}
+              </div>
+
+              <div className="mt-16 flex items-center gap-8 border-t border-outline-variant pt-6 max-w-md">
                 <div className="flex-1">
                   <div className="flex justify-between mb-2">
                     <span className="font-accent text-label-caps text-outline-variant">System Load</span>

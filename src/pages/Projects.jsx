@@ -17,8 +17,8 @@ const Projects = () => {
             <span className="text-secondary-fixed-dim italic">Works_</span>
           </h1>
           <p className="text-body-lg text-on-surface-variant max-w-2xl">
-            Um arquivo de artefatos digitais. Interfaces de alta tensão que unem rigidez
-            estrutural com energia cinética e urbana.
+            Automações em produção, ferramentas open source e projetos full stack: das
+            integrações de APIs REST com n8n às interfaces em React e Next.js.
           </p>
         </div>
         <div className="md:col-span-5 mt-8 md:mt-0 flex flex-wrap gap-4 md:justify-end">

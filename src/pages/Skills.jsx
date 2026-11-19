@@ -1,38 +1,37 @@
-const frontendSkills = [
-  { name: "React.js", level: 95, desc: "Arquitetura de componentes, Hooks, gerenciamento de estado." },
-  { name: "JavaScript / TypeScript", level: 88, desc: "Tipagem estática, interfaces, generics." },
-  { name: "Tailwind CSS", level: 92, desc: "Estilização utility-first, design systems customizados." },
-];
-
-const backendSkills = [
-  { name: "Node.js", level: 85, desc: "Arquitetura orientada a eventos, APIs RESTful." },
-  { name: "PostgreSQL", level: 78, desc: "Modelagem relacional, queries complexas." },
-];
+import { certifications, education, experience, languages, skillGroups } from "../data/profile";
 
 const tools = [
+  { icon: "account_tree", label: "n8n" },
   { icon: "terminal", label: "Git / CLI" },
   { icon: "cloud_sync", label: "Docker" },
   { icon: "rocket_launch", label: "Vercel" },
-  { icon: "design_services", label: "Figma" },
+  { icon: "monitor_heart", label: "Zabbix" },
+  { icon: "support_agent", label: "GLPI" },
 ];
 
-const SkillBar = ({ name, level, desc, color = "secondary" }) => (
-  <div>
-    <div className="flex justify-between items-center mb-1">
-      <span className="text-body-lg font-bold">{name}</span>
-      <span className={`font-accent text-label-caps ${color === "secondary" ? "text-secondary-container" : "text-primary"}`}>
-        {level}%
+const SkillGroup = ({ title, items, desc, index }) => (
+  <div
+    className={`bg-surface-container-low p-6 md:p-8 offset-frame flex flex-col gap-6 z-10 ${
+      index % 2 === 0 ? "md:rotate-1" : "md:-rotate-1"
+    }`}
+  >
+    <div className="flex items-center justify-between border-b-2 border-outline-variant pb-4">
+      <h2 className="font-accent text-accent-italic text-primary uppercase">{title}</h2>
+      <span className="font-accent text-label-caps text-outline-variant">
+        {String(index + 1).padStart(2, "0")}
       </span>
     </div>
-    <div className="h-1 w-full bg-surface-container-high relative glitch-bar">
-      <div
-        className={`absolute top-0 left-0 h-full border-r-2 border-white ${
-          color === "secondary" ? "bg-secondary-container" : "bg-primary"
-        }`}
-        style={{ width: `${level}%` }}
-      />
-    </div>
-    <p className="text-sm text-on-surface-variant mt-1">{desc}</p>
+    <ul className="flex flex-wrap gap-2">
+      {items.map((item) => (
+        <li
+          key={item}
+          className="bg-surface border border-outline-variant px-3 py-1 font-accent text-label-caps text-on-surface"
+        >
+          {item}
+        </li>
+      ))}
+    </ul>
+    <p className="text-sm text-on-surface-variant">{desc}</p>
   </div>
 );
 
@@ -50,59 +49,102 @@ const Skills = () => {
         </div>
         <div className="col-span-4 md:col-span-4 flex items-end">
           <p className="text-body-lg text-on-surface-variant border-l-4 border-secondary-container pl-4">
-            ARQUIVOS CLASSIFICADOS: alta proficiência em arquitetura web moderna, com
-            prontidão operacional em múltiplas stacks.
+            Competências, experiência e formação: automação e integrações de APIs no dia a dia
+            do estágio, desenvolvimento web nos projetos pessoais.
           </p>
         </div>
       </header>
 
-      <section className="grid grid-cols-4 md:grid-cols-12 gap-gutter mb-24">
-        <div className="col-span-4 md:col-span-5 bg-surface-container-low p-6 md:p-8 offset-frame flex flex-col gap-6 md:rotate-1 z-10">
-          <div className="flex items-center justify-between border-b-2 border-outline-variant pb-4">
-            <h2 className="font-accent text-accent-italic text-primary uppercase">Frontend_Ops</h2>
-            <span className="bg-secondary-container text-on-secondary-container font-accent text-label-caps px-2 py-1">
-              ACTIVE
-            </span>
-          </div>
-          <div className="flex flex-col gap-4">
-            {frontendSkills.map((s) => (
-              <SkillBar key={s.name} {...s} color="secondary" />
-            ))}
-          </div>
-        </div>
+      {/* Competências */}
+      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 mb-24">
+        {skillGroups.map((group, i) => (
+          <SkillGroup key={group.title} {...group} index={i} />
+        ))}
+      </section>
 
-        <div className="col-span-4 md:col-span-6 md:col-start-7 bg-surface-container-highest p-6 md:p-8 offset-frame flex flex-col gap-6 mt-8 md:mt-16 md:-rotate-1">
-          <div className="flex items-center justify-between border-b-2 border-outline-variant pb-4">
-            <h2 className="font-accent text-accent-italic text-primary uppercase">Backend_Core</h2>
-            <span className="border border-outline text-outline font-accent text-label-caps px-2 py-1">
-              STABLE
-            </span>
-          </div>
-          <div className="flex flex-col gap-4">
-            {backendSkills.map((s) => (
-              <SkillBar key={s.name} {...s} color="primary" />
-            ))}
-          </div>
+      <section className="bg-surface-container-low p-6 md:p-8 offset-frame mb-24 flex flex-col md:flex-row gap-8 items-center border-l-8 border-secondary-container">
+        <div className="md:w-1/3">
+          <h2 className="font-accent text-accent-italic text-primary uppercase mb-2">Tactical_Gear</h2>
+          <p className="text-on-surface-variant text-body-lg">
+            Ferramentas usadas no trabalho e nos projetos.
+          </p>
         </div>
+        <div className="md:w-2/3 flex flex-wrap gap-4">
+          {tools.map((tool) => (
+            <div
+              key={tool.label}
+              className="bg-surface border border-outline-variant p-4 flex items-center gap-3 w-[140px]"
+            >
+              <span className="material-symbols-outlined text-secondary-container">{tool.icon}</span>
+              <span className="font-accent text-label-caps">{tool.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
 
-        <div className="col-span-4 md:col-span-12 bg-surface-container-low p-6 md:p-8 offset-frame mt-8 flex flex-col md:flex-row gap-8 items-center border-l-8 border-secondary-container">
-          <div className="md:w-1/3">
-            <h2 className="font-accent text-accent-italic text-primary uppercase mb-2">Tactical_Gear</h2>
-            <p className="text-on-surface-variant text-body-lg">
-              Ambiente de desenvolvimento e protocolos de deploy usados em missões ativas.
-            </p>
-          </div>
-          <div className="md:w-2/3 flex flex-wrap gap-4">
-            {tools.map((tool) => (
-              <div
-                key={tool.label}
-                className="bg-surface border border-outline-variant p-4 flex items-center gap-3 w-[140px]"
-              >
-                <span className="material-symbols-outlined text-secondary-container">{tool.icon}</span>
-                <span className="font-accent text-label-caps">{tool.label}</span>
+      {/* Experiência */}
+      <section className="mb-24">
+        <h2 className="font-sans text-headline text-primary uppercase flex items-center gap-4 border-b-2 border-outline-variant pb-6 mb-12">
+          <span className="text-outline-variant font-accent text-label-caps">Sec. 02</span>
+          Experiência
+        </h2>
+        <ol className="flex flex-col gap-12">
+          {experience.map((job) => (
+            <li key={job.company} className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+              <div className="md:col-span-3 font-accent text-label-caps text-secondary-fixed-dim uppercase">
+                {job.period}
               </div>
+              <div className="md:col-span-9 border-l-4 border-primary-container pl-6">
+                <h3 className="text-body-lg font-bold text-on-surface">{job.title}</h3>
+                <p className="font-accent text-label-caps text-on-surface-variant uppercase mb-4">
+                  {job.company}
+                </p>
+                <ul className="flex flex-col gap-2 list-disc pl-5 text-on-surface-variant">
+                  {job.highlights.map((h) => (
+                    <li key={h}>{h}</li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* Formação, idiomas e certificações */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="bg-surface-container p-6 md:p-8 border-l-4 border-secondary-fixed-dim">
+          <h2 className="font-accent text-label-caps text-on-surface-variant uppercase tracking-widest mb-6">
+            Formação
+          </h2>
+          <p className="font-accent text-label-caps text-secondary-fixed-dim uppercase mb-2">
+            {education.period}
+          </p>
+          <h3 className="text-body-lg font-bold text-on-surface">{education.title}</h3>
+          <p className="text-on-surface-variant mb-4">{education.institution}</p>
+          <p className="text-sm text-on-surface-variant">{education.desc}</p>
+          <h2 className="font-accent text-label-caps text-on-surface-variant uppercase tracking-widest mt-8 mb-2">
+            Idiomas
+          </h2>
+          <p className="text-on-surface">{languages}</p>
+        </div>
+
+        <div className="bg-surface-container p-6 md:p-8 border-l-4 border-secondary-fixed-dim">
+          <h2 className="font-accent text-label-caps text-on-surface-variant uppercase tracking-widest mb-6">
+            Certificações
+          </h2>
+          <ul className="flex flex-col gap-4">
+            {certifications.map((c, i) => (
+              <li
+                key={c}
+                className={`flex items-start gap-3 ${
+                  i < certifications.length - 1 ? "border-b border-outline-variant/50 pb-4" : ""
+                }`}
+              >
+                <span className="material-symbols-outlined text-secondary-fixed-dim">verified</span>
+                <span className="text-on-surface">{c}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
     </main>

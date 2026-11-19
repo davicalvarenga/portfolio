@@ -41,26 +41,40 @@ const ProjectDetail = () => {
           </p>
         </div>
         <div className="md:col-span-4 flex flex-col md:items-end gap-4 z-10 mt-8 md:mt-0">
-          <button
-            type="button"
-            className="w-full md:w-auto bg-primary-container text-white px-12 py-4 font-accent text-label-caps uppercase tracking-widest hover:bg-secondary-container hover:text-on-secondary-container transition-all duration-300 flex items-center justify-center gap-2 group -skew-x-12 shadow-[0_0_20px_rgba(119,1,208,0.5)]"
-          >
-            <span className="skew-x-12 font-bold italic flex items-center gap-2">
-              Live Demo
-              <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
-                arrow_forward
+          {project.links.demo && (
+            <a
+              href={project.links.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full md:w-auto bg-primary-container text-white px-12 py-4 font-accent text-label-caps uppercase tracking-widest hover:bg-secondary-container hover:text-on-secondary-container transition-all duration-300 flex items-center justify-center gap-2 group -skew-x-12 shadow-[0_0_20px_rgba(119,1,208,0.5)]"
+            >
+              <span className="skew-x-12 font-bold italic flex items-center gap-2">
+                Live Demo
+                <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
+                  arrow_forward
+                </span>
               </span>
+            </a>
+          )}
+          {project.links.repos.map((repo) => (
+            <a
+              key={repo.href}
+              href={repo.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full md:w-auto border-4 border-primary-container text-on-surface px-8 py-4 font-accent text-label-caps uppercase tracking-widest hover:border-secondary hover:text-secondary transition-colors duration-300 flex items-center justify-center gap-2 skew-x-12"
+            >
+              <span className="-skew-x-12 font-bold italic flex items-center gap-2">
+                <span className="material-symbols-outlined">code</span>
+                {repo.label}
+              </span>
+            </a>
+          ))}
+          {!project.links.demo && project.links.repos.length === 0 && (
+            <span className="font-accent text-label-caps text-outline uppercase tracking-widest border border-outline-variant px-4 py-2">
+              Código privado · demonstração sob solicitação
             </span>
-          </button>
-          <button
-            type="button"
-            className="w-full md:w-auto border-4 border-primary-container text-on-surface px-8 py-4 font-accent text-label-caps uppercase tracking-widest hover:border-secondary hover:text-secondary transition-colors duration-300 flex items-center justify-center gap-2 skew-x-12"
-          >
-            <span className="-skew-x-12 font-bold italic flex items-center gap-2">
-              <span className="material-symbols-outlined">code</span>
-              Source Code
-            </span>
-          </button>
+          )}
         </div>
       </header>
 
@@ -69,7 +83,7 @@ const ProjectDetail = () => {
         <div className="relative bg-surface-container-highest border border-outline-variant p-2 md:p-4 shadow-[4px_4px_0_0_#dcb8ff]">
           <ProjectVisual icon={project.icon} className="w-full aspect-video" />
           <div className="absolute bottom-4 right-4 bg-surface text-secondary-fixed-dim px-3 py-1 font-accent text-accent-italic border border-secondary-fixed-dim">
-            SYS.ACTIVE
+            {project.status}
           </div>
         </div>
       </section>

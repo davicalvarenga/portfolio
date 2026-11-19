@@ -7,7 +7,7 @@ const ProjectCard = ({ project }) => {
       <div className="absolute inset-0 border-2 border-primary-container translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-300 pointer-events-none z-0" />
       <div className="relative bg-surface p-8 border border-outline-variant z-10 h-full flex flex-col group-hover:border-secondary-container transition-colors duration-300">
         <div className="flex justify-between items-start mb-6">
-          <span className="font-accent text-label-caps text-secondary-container bg-surface-container-highest px-3 py-1 border border-outline-variant uppercase">
+          <span className="font-accent text-label-caps text-primary bg-surface-container-highest px-3 py-1 border border-outline-variant uppercase">
             {project.status}
           </span>
           <span className="font-sans text-headline text-outline-variant">{project.number}</span>
