@@ -1,8 +1,11 @@
 // Dados dos projetos exibidos em /projetos e /projetos/:slug.
 // links.demo: URL da versão no ar (ou null). links.repos: repositórios públicos (pode ser vazio).
+// visual: { type: "image", src, alt } | { type: "flow" } | { type: "doc" } | null
+//   (imagens ficam em public/projects/).
 export const projects = [
   {
     slug: "automacoes-glpi-n8n",
+    visual: { type: "flow" },
     number: "01",
     title: "Automações GLPI + n8n",
     category: "automacao",
@@ -33,6 +36,11 @@ export const projects = [
   },
   {
     slug: "graphs-code",
+    visual: {
+      type: "image",
+      src: "/projects/graphs-code.jpg",
+      alt: "Graphs-Code executando um programa C: grafo roda W5 à esquerda, código e matriz de adjacência à direita.",
+    },
     number: "02",
     title: "Graphs-Code",
     category: "web",
@@ -60,6 +68,7 @@ export const projects = [
   },
   {
     slug: "framework-candidaturas",
+    visual: { type: "doc" },
     number: "03",
     title: "Framework de Candidaturas",
     category: "ferramentas",
@@ -87,6 +96,7 @@ export const projects = [
   },
   {
     slug: "the-crow",
+    visual: null,
     number: "04",
     title: "The Crow",
     category: "web",

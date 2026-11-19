@@ -1,6 +1,6 @@
 # Portfólio — Davi Alvarenga
 
-Portfólio pessoal em React com visual de **terminal / documentação técnica**: fundo grafite, JetBrains Mono para títulos, navegação e metadados, IBM Plex Sans para o texto corrido, um único destaque em âmbar e verde só para status. Linhas de comando (`$ ls projetos/`) aparecem apenas como rótulos de seção, sem animações além do cursor do hero.
+Portfólio pessoal em React com visual **editorial escuro**: fundo quase preto em tom quente, títulos em serifa (Fraunces), texto em Instrument Sans, um único destaque em laranja-tijolo e verde só para status. Os projetos aparecem com conteúdo visual real: captura de tela do Graphs-Code, diagrama do fluxo das automações e uma miniatura do framework de candidaturas.
 
 ## Stack
 
@@ -43,8 +43,10 @@ src/
   components/
     Navbar.jsx
     Footer.jsx
-    ProjectCard.jsx        # item de lista de projeto (Home e galeria), linha inteira clicável
-    Prompt.jsx             # linha de comando usada como rótulo de seção
+    ProjectCard.jsx        # bloco de projeto (Home e galeria): visual + texto, alternando lados
+    ProjectVisual.jsx      # escolhe o visual do projeto (imagem, diagrama, miniatura ou stack)
+    FlowDiagram.jsx        # diagrama do fluxo GLPI → n8n → Nextcloud Talk (lista vertical no celular)
+    DocMockup.jsx          # miniatura ilustrativa do framework de candidaturas
     StatusBadge.jsx        # status do projeto (verde = em produção / no ar)
     buttonStyles.js        # classes compartilhadas dos botões
   data/projects.js         # conteúdo dos projetos (edite aqui para add/editar projetos)
@@ -56,7 +58,7 @@ src/
     Skills.jsx
     Contact.jsx
     NotFound.jsx
-  index.css                # tokens de design (cores e fontes) + cursor do hero
+  index.css                # tokens de design (cores e fontes)
 ```
 
 ## Personalizando
@@ -64,7 +66,8 @@ src/
 - **Projetos**: edite `src/data/projects.js` — cada item vira um card na galeria e uma página de detalhe em `/projetos/:slug`. Em `links`, `demo` é a URL no ar (ou `null`) e `repos` lista os repositórios públicos; os botões só aparecem quando há link.
 - **Perfil**: bio, links sociais, competências, experiência, formação e certificações ficam em `src/data/profile.js`. Telefone e e-mail ficam fora de propósito, porque o repositório é público.
 - **Cores/tipografia**: tudo fica centralizado no bloco `@theme` de `src/index.css`.
-- **Imagens dos projetos**: hoje os projetos não têm imagem. Para adicionar capturas de tela, coloque os arquivos em `public/projects/` e exiba-os em `ProjectDetail.jsx`.
+- **Visual dos projetos**: o campo `visual` de cada projeto em `src/data/projects.js` aceita `{ type: "image", src, alt }` (arquivo em `public/projects/`), `{ type: "flow" }`, `{ type: "doc" }` ou `null` (mostra a stack em tipografia).
+- **Números da Home**: ficam em `stats`, em `src/data/profile.js`.
 
 ## Back-end / formulário de contato
 

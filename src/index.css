@@ -1,22 +1,24 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Tokens de design — estilo terminal / documentação técnica.
-   Uma única cor de destaque (âmbar); verde só para status.
+   Tokens de design — editorial escuro.
+   Serifa (Fraunces) para títulos, Instrument Sans para o texto,
+   um único destaque em laranja-tijolo; verde só para status.
    ============================================================ */
 @theme {
-  --color-bg: #0e1013;
-  --color-panel: #15181d;
-  --color-line: #262b33;
-  --color-fg: #e4e4df;
-  --color-muted: #9aa1ab;
-  --color-faint: #646b75;
-  --color-accent: #e5b567;
-  --color-ok: #8fcf8f;
-  --color-danger: #ef8a80;
+  --color-bg: #13120f;
+  --color-panel: #1b1a16;
+  --color-panel-2: #22201b;
+  --color-line: #2f2c26;
+  --color-fg: #f1ece2;
+  --color-muted: #a8a194;
+  --color-faint: #6f695e;
+  --color-accent: #ec7a45;
+  --color-ok: #86c98f;
+  --color-danger: #f08a7e;
 
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 html {
@@ -38,22 +40,4 @@ body {
 ::selection {
   background: var(--color-accent);
   color: var(--color-bg);
-}
-
-/* Cursor de terminal piscando (usado uma única vez, no hero) */
-@keyframes caret-blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-.caret {
-  display: inline-block;
-  width: 0.6em;
-  height: 1.1em;
-  margin-left: 0.15em;
-  vertical-align: -0.15em;
-  background: var(--color-accent);
-  animation: caret-blink 1.1s steps(1) infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .caret { animation: none; }
 }

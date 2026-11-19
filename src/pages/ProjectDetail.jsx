@@ -1,17 +1,17 @@
 import { Link, useParams } from "react-router-dom";
-import Prompt from "../components/Prompt";
+import ProjectVisual from "../components/ProjectVisual";
 import StatusBadge from "../components/StatusBadge";
 import { primaryButton, secondaryButton } from "../components/buttonStyles";
 import { getProjectBySlug } from "../data/projects";
 import NotFound from "./NotFound";
 
-const Section = ({ title, children }) => (
-  <section className="border-t border-line py-8">
-    <h2 className="font-mono text-sm text-accent">
-      <span className="text-faint">## </span>
+const Section = ({ number, title, children }) => (
+  <section className="grid gap-4 border-t border-line py-10 md:grid-cols-[14rem_1fr] md:gap-10">
+    <h2 className="font-serif text-2xl font-medium">
+      <span className="mr-3 text-lg text-accent italic">{number}</span>
       {title}
     </h2>
-    <div className="mt-4">{children}</div>
+    <div>{children}</div>
   </section>
 );
 
@@ -24,26 +24,28 @@ const ProjectDetail = () => {
   const { demo, repos } = project.links;
 
   return (
-    <article className="py-16 md:py-20">
-      <Link to="/projetos" className="font-mono text-sm text-muted hover:text-accent">
-        ← projetos
+    <article className="py-14 md:py-20">
+      <Link to="/projetos" className="text-sm text-muted hover:text-fg">
+        ← Projetos
       </Link>
 
-      <header className="mt-8">
-        <Prompt cmd={`cat projetos/${project.slug}/README.md`} />
-        <h1 className="mt-6 font-mono text-3xl font-semibold tracking-tight md:text-4xl">
-          {project.title}
-        </h1>
-        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
-          <span className="font-mono text-sm text-muted">{project.tagline}</span>
-          <StatusBadge status={project.status} />
+      <header className="mt-10 grid gap-10 md:grid-cols-[1.6fr_1fr] md:items-end md:gap-16">
+        <div>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+            <span className="text-muted">{project.tagline}</span>
+            <StatusBadge status={project.status} />
+          </div>
+          <h1 className="mt-4 font-serif text-5xl leading-[1.02] font-medium tracking-[-0.03em] md:text-7xl">
+            {project.title}
+          </h1>
+          <p className="mt-6 max-w-2xl font-serif text-xl leading-snug text-fg/90 md:text-2xl">
+            {project.description}
+          </p>
         </div>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-fg/90">{project.description}</p>
-
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-3 md:justify-end">
           {demo && (
             <a href={demo} target="_blank" rel="noopener noreferrer" className={primaryButton}>
-              abrir demo ↗
+              Abrir demo ↗
             </a>
           )}
           {repos.map((repo) => (
@@ -54,30 +56,30 @@ const ProjectDetail = () => {
               rel="noopener noreferrer"
               className={secondaryButton}
             >
-              {repo.label.toLowerCase()} ↗
+              {repo.label} ↗
             </a>
           ))}
           {!demo && repos.length === 0 && (
-            <p className="font-mono text-sm text-muted">
-              código privado · demonstração sob solicitação
-            </p>
+            <p className="text-sm text-muted">Código privado · demonstração sob solicitação</p>
           )}
         </div>
       </header>
 
-      <div className="mt-12">
-        <Section title="o problema">
-          <p className="max-w-2xl leading-relaxed text-fg/90">{project.challenge}</p>
+      <ProjectVisual project={project} className="mt-14" />
+
+      <div className="mt-14">
+        <Section number="01" title="O problema">
+          <p className="max-w-2xl text-lg leading-relaxed text-fg/90">{project.challenge}</p>
         </Section>
-        <Section title="a solução">
-          <p className="max-w-2xl leading-relaxed text-fg/90">{project.solution}</p>
+        <Section number="02" title="A solução">
+          <p className="max-w-2xl text-lg leading-relaxed text-fg/90">{project.solution}</p>
         </Section>
-        <Section title="stack">
-          <dl className="grid gap-x-8 gap-y-4 sm:grid-cols-[12rem_1fr]">
+        <Section number="03" title="Stack">
+          <dl className="grid max-w-2xl gap-x-8 gap-y-4 sm:grid-cols-[11rem_1fr]">
             {project.techStack.map((tech) => (
               <div key={tech.name} className="contents">
-                <dt className="font-mono text-sm text-fg">{tech.name}</dt>
-                <dd className="text-sm leading-relaxed text-muted">{tech.desc}</dd>
+                <dt className="font-semibold text-fg">{tech.name}</dt>
+                <dd className="leading-relaxed text-muted">{tech.desc}</dd>
               </div>
             ))}
           </dl>

@@ -1,26 +1,32 @@
 import { Link } from "react-router-dom";
+import ProjectVisual from "./ProjectVisual";
 import StatusBadge from "./StatusBadge";
 
-// Item de lista de projeto (Home e /projetos). A linha inteira é clicável.
-const ProjectCard = ({ project }) => {
+// Bloco de projeto (Home e /projetos): visual + texto, alternando o lado a cada item.
+const ProjectCard = ({ project, index = 0 }) => {
+  const reversed = index % 2 === 1;
+
   return (
-    <article className="group relative grid gap-x-6 gap-y-2 border-t border-line py-6 sm:grid-cols-[2.5rem_1fr_auto]">
-      <span className="hidden font-mono text-sm text-faint sm:block">{project.number}</span>
-      <div className="min-w-0">
-        <h3 className="font-mono text-lg font-medium text-fg">
+    <article className="group relative grid items-center gap-8 border-t border-line py-12 md:grid-cols-[1.25fr_1fr] md:gap-14">
+      <ProjectVisual project={project} className={reversed ? "md:order-2" : ""} />
+      <div>
+        <div className="flex items-center justify-between gap-4">
+          <span className="font-serif text-xl text-accent italic">{project.number}</span>
+          <StatusBadge status={project.status} />
+        </div>
+        <h3 className="mt-2 font-serif text-3xl leading-tight font-semibold tracking-tight md:text-4xl">
           <Link
             to={`/projetos/${project.slug}`}
-            className="group-hover:text-accent transition-colors before:absolute before:inset-0"
+            className="transition-colors group-hover:text-accent before:absolute before:inset-0"
           >
-            {project.slug}/
+            {project.title}
           </Link>
         </h3>
-        <p className="mt-1 text-sm text-muted">{project.title}</p>
-        <p className="mt-3 max-w-2xl leading-relaxed text-fg/90">{project.summary}</p>
-        <p className="mt-3 font-mono text-xs text-muted">{project.tags.join(" · ")}</p>
-      </div>
-      <div className="sm:pt-1.5">
-        <StatusBadge status={project.status} />
+        <p className="mt-4 leading-relaxed text-muted">{project.summary}</p>
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+          <span className="text-fg/80">{project.tags.join(" · ")}</span>
+          <span className="font-semibold text-accent">Ver projeto →</span>
+        </div>
       </div>
     </article>
   );

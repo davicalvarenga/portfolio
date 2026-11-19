@@ -12,6 +12,15 @@ export const profile = {
   goal: "Aberto a estágio ou vaga júnior em desenvolvimento",
 };
 
+// Números em destaque na Home. Todos vêm do CV; "stars" é um valor público
+// que muda com o tempo (conferido em nov/2026).
+export const stats = [
+  { value: "8", label: "workflows n8n em produção" },
+  { value: "11", label: "técnicos recebem a fila de chamados antes do turno" },
+  { value: "72", label: "casos de teste validados contra o gcc" },
+  { value: "29", label: "stars no framework open source" },
+];
+
 export const socials = [
   { label: "GitHub", href: "https://github.com/davicalvarenga" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/davicalvarenga" },
