@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ProjectCard from "../components/ProjectCard";
+import Prompt from "../components/Prompt";
 import { categories, projects } from "../data/projects";
 
 const Projects = () => {
@@ -9,50 +10,52 @@ const Projects = () => {
     filter === "all" ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <div className="pt-[100px] px-margin-mobile md:px-margin-desktop pb-24 max-w-[1920px] mx-auto">
-      <header className="mb-16 md:grid md:grid-cols-12 gap-gutter items-end mt-12">
-        <div className="md:col-span-7">
-          <h1 className="font-sans text-display-mobile md:text-display-lg text-on-surface mb-4 uppercase">
-            Selected <br />
-            <span className="text-secondary-fixed-dim italic">Works_</span>
-          </h1>
-          <p className="text-body-lg text-on-surface-variant max-w-2xl">
-            Automações em produção, ferramentas open source e projetos full stack: das
-            integrações de APIs REST com n8n às interfaces em React e Next.js.
-          </p>
-        </div>
-        <div className="md:col-span-5 mt-8 md:mt-0 flex flex-wrap gap-4 md:justify-end">
-          {categories.map((cat) => {
-            const active = filter === cat.value;
-            return (
-              <button
-                key={cat.value}
-                type="button"
-                onClick={() => setFilter(cat.value)}
-                className={`px-4 py-2 font-accent text-label-caps uppercase border-2 -skew-x-12 transition-colors ${
-                  active
-                    ? "bg-secondary-fixed-dim text-on-secondary-fixed border-secondary-fixed-dim shadow-[0_0_25px_rgba(119,1,208,0.6)]"
-                    : "bg-transparent text-on-surface border-outline-variant hover:border-secondary-fixed-dim hover:text-secondary-fixed-dim"
-                }`}
-              >
-                <span className="inline-block skew-x-12">{cat.label}</span>
-              </button>
-            );
-          })}
-        </div>
+    <div className="py-16 md:py-20">
+      <header>
+        <Prompt cmd="ls -l projetos/" />
+        <h1 className="mt-6 font-mono text-3xl font-semibold tracking-tight md:text-4xl">
+          Projetos
+        </h1>
+        <p className="mt-4 max-w-2xl leading-relaxed text-muted">
+          Automações em produção, ferramentas open source e projetos full stack: das
+          integrações de APIs REST com n8n às interfaces em React e Next.js.
+        </p>
       </header>
 
-      {filtered.length === 0 ? (
-        <p className="text-body-lg text-on-surface-variant text-center py-24">
-          Nenhum projeto encontrado nessa categoria ainda.
-        </p>
-      ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-16">
-          {filtered.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
-        </div>
-      )}
+      <div className="mt-10 flex flex-wrap gap-2" role="group" aria-label="Filtrar por categoria">
+        {categories.map((cat) => {
+          const active = filter === cat.value;
+          return (
+            <button
+              key={cat.value}
+              type="button"
+              aria-pressed={active}
+              onClick={() => setFilter(cat.value)}
+              className={`border px-3 py-1 font-mono text-sm transition-colors ${
+                active
+                  ? "border-accent text-accent"
+                  : "border-line text-muted hover:border-faint hover:text-fg"
+              }`}
+            >
+              {cat.label.toLowerCase()}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="mt-8">
+        {filtered.length === 0 ? (
+          <p className="border-t border-line py-10 font-mono text-sm text-muted">
+            nenhum projeto nesta categoria ainda.
+          </p>
+        ) : (
+          <div className="border-b border-line">
+            {filtered.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

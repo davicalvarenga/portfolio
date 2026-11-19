@@ -1,20 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import Prompt from "../components/Prompt";
+import { secondaryButton } from "../components/buttonStyles";
 
 const NotFound = () => {
+  const { pathname } = useLocation();
+
   return (
-    <div className="pt-[140px] px-margin-mobile md:px-margin-desktop pb-24 text-center min-h-[60vh]">
-      <div className="font-accent text-label-caps text-outline-variant tracking-widest uppercase mb-4">
-        Error_404
-      </div>
-      <h1 className="font-sans text-headline text-primary mb-4 uppercase">Página não encontrada</h1>
-      <p className="text-body-lg text-on-surface-variant mb-8">
-        O endereço acessado não existe neste portfólio.
+    <div className="py-16 md:py-24">
+      <Prompt cmd={`cd ${pathname}`} />
+      <p className="mt-2 break-all font-mono text-sm text-danger" aria-hidden="true">
+        bash: cd: {pathname}: No such file or directory
       </p>
-      <Link
-        to="/"
-        className="inline-block px-8 py-3 bg-primary-container text-on-primary-container font-accent text-label-caps uppercase -skew-x-12 border-2 border-primary"
-      >
-        <span className="inline-block skew-x-12">Voltar ao início</span>
+      <h1 className="mt-8 font-mono text-3xl font-semibold tracking-tight">
+        Página não encontrada
+      </h1>
+      <p className="mt-4 text-muted">O endereço acessado não existe neste portfólio.</p>
+      <Link to="/" className={`${secondaryButton} mt-8`}>
+        ← voltar ao início
       </Link>
     </div>
   );

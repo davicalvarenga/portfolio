@@ -1,22 +1,22 @@
-import { socials } from "../data/profile";
+import { profile, socials } from "../data/profile";
 
 const Footer = () => {
   return (
-    <footer className="bg-surface-container-lowest w-full py-12 border-t-4 border-primary relative z-20">
-      <div className="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop gap-gutter max-w-full mx-auto">
-        <div className="font-accent text-label-caps text-on-surface uppercase tracking-widest text-center md:text-left">
-          © {new Date().getFullYear()} DAVI_ALVARENGA. TODOS OS DIREITOS RESERVADOS.
-        </div>
-        <ul className="flex flex-wrap gap-8 items-center justify-center">
+    <footer className="border-t border-line">
+      <div className="mx-auto flex max-w-4xl flex-col gap-3 px-4 py-8 font-mono text-xs text-muted sm:flex-row sm:items-center sm:justify-between md:px-6">
+        <p>
+          © {new Date().getFullYear()} {profile.name}
+        </p>
+        <ul className="flex gap-5">
           {socials.map((s) => (
             <li key={s.label}>
               <a
-                className="text-body-lg text-outline hover:text-secondary transition-colors"
+                className="hover:text-accent transition-colors"
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {s.label}
+                {s.label.toLowerCase()} ↗
               </a>
             </li>
           ))}

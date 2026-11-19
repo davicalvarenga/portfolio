@@ -1,6 +1,6 @@
 # Portfólio — Davi Alvarenga
 
-Portfólio pessoal em React, com uma identidade visual **Kinetic Noir**: fundo escuro, tipografia forte (Inter + Space Grotesk), cantos retos, botões inclinados, glitch e "offset frames" — um misto de grid suíço disciplinado com energia urbana/kinetic, em tom roxo elétrico.
+Portfólio pessoal em React com visual de **terminal / documentação técnica**: fundo grafite, JetBrains Mono para títulos, navegação e metadados, IBM Plex Sans para o texto corrido, um único destaque em âmbar e verde só para status. Linhas de comando (`$ ls projetos/`) aparecem apenas como rótulos de seção, sem animações além do cursor do hero.
 
 ## Stack
 
@@ -43,8 +43,10 @@ src/
   components/
     Navbar.jsx
     Footer.jsx
-    ProjectCard.jsx        # card usado na Home e na galeria de projetos
-    ProjectVisual.jsx      # placeholder visual (substitua por screenshots reais)
+    ProjectCard.jsx        # item de lista de projeto (Home e galeria), linha inteira clicável
+    Prompt.jsx             # linha de comando usada como rótulo de seção
+    StatusBadge.jsx        # status do projeto (verde = em produção / no ar)
+    buttonStyles.js        # classes compartilhadas dos botões
   data/projects.js         # conteúdo dos projetos (edite aqui para add/editar projetos)
   data/profile.js          # bio, links sociais, competências, experiência e formação
   pages/
@@ -54,7 +56,7 @@ src/
     Skills.jsx
     Contact.jsx
     NotFound.jsx
-  index.css                # tokens de design (cores, fontes, tamanhos) + classes de efeito
+  index.css                # tokens de design (cores e fontes) + cursor do hero
 ```
 
 ## Personalizando
@@ -62,7 +64,7 @@ src/
 - **Projetos**: edite `src/data/projects.js` — cada item vira um card na galeria e uma página de detalhe em `/projetos/:slug`. Em `links`, `demo` é a URL no ar (ou `null`) e `repos` lista os repositórios públicos; os botões só aparecem quando há link.
 - **Perfil**: bio, links sociais, competências, experiência, formação e certificações ficam em `src/data/profile.js`. Telefone e e-mail ficam fora de propósito, porque o repositório é público.
 - **Cores/tipografia**: tudo fica centralizado no bloco `@theme` de `src/index.css`.
-- **Imagens dos projetos**: `ProjectVisual.jsx` hoje renderiza um placeholder estilizado; troque por uma `<img>` real (ex.: arquivos em `public/projects/`) quando tiver screenshots.
+- **Imagens dos projetos**: hoje os projetos não têm imagem. Para adicionar capturas de tela, coloque os arquivos em `public/projects/` e exiba-os em `ProjectDetail.jsx`.
 
 ## Back-end / formulário de contato
 

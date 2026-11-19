@@ -4,36 +4,37 @@
 
 export const profile = {
   name: "Davi Coelho de Alvarenga",
-  role: "Estudante de Ciência da Computação · Estagiário de Redes e Infraestrutura",
-  location: "Goiânia-GO // Presencial ou remoto",
+  shortName: "Davi Alvarenga",
+  role: "Ciência da Computação na PUC-GO · Estagiário de Redes e Infraestrutura na Net Supre",
+  location: "Goiânia-GO · presencial ou remoto",
   bio:
-    "Estudante de Ciência da Computação na PUC-GO e estagiário na Net Supre, onde desenvolvo as automações do suporte: 8 workflows n8n em produção integrando APIs REST (GLPI, Zabbix, Nextcloud Talk) com JavaScript e PostgreSQL. Construo projetos full stack em TypeScript, React e Next.js com testes e CI.",
-  goal: "Busco estágio ou vaga júnior em desenvolvimento.",
+    "Desenvolvo as automações do suporte na Net Supre: 8 workflows n8n em produção integrando APIs REST (GLPI, Zabbix, Nextcloud Talk) com JavaScript e PostgreSQL. Nos projetos pessoais, construo aplicações full stack em TypeScript, React e Next.js com testes e CI.",
+  goal: "Aberto a estágio ou vaga júnior em desenvolvimento",
 };
 
 export const socials = [
-  { label: "GitHub", icon: "code", href: "https://github.com/davicalvarenga" },
-  { label: "LinkedIn", icon: "work", href: "https://www.linkedin.com/in/davicalvarenga" },
+  { label: "GitHub", href: "https://github.com/davicalvarenga" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/davicalvarenga" },
 ];
 
 export const skillGroups = [
   {
-    title: "Backend_Automação",
+    title: "Backend e automação",
     items: ["JavaScript", "Node.js", "Express", "n8n", "APIs REST", "Webhooks"],
     desc: "Integrações com GLPI, Zabbix, Nextcloud Talk e Google Gemini API.",
   },
   {
-    title: "Frontend_FullStack",
+    title: "Frontend e full stack",
     items: ["TypeScript", "React", "Next.js", "Vite", "PWA", "Tailwind CSS"],
     desc: "Interfaces web com componentes, rotas e deploy contínuo.",
   },
   {
-    title: "Dados",
+    title: "Bancos de dados",
     items: ["PostgreSQL", "MySQL", "SQLite", "SQL"],
     desc: "Persistência de eventos, relatórios e modelagem relacional.",
   },
   {
-    title: "Qualidade_Entrega",
+    title: "Qualidade e entrega",
     items: ["Git/GitHub", "Pull requests", "CI", "Jest", "React Testing Library", "Docker", "Vercel", "Linux"],
     desc: "Versionamento, testes automatizados e pipelines de validação.",
   },
